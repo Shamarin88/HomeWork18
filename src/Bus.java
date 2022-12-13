@@ -81,4 +81,10 @@ public class Bus extends Race {
             System.out.println(BusType.BUS_TYPE.busType);
         }
     }
+
+    @Override
+    public boolean completeDiagnostic() {
+        System.out.println("Автобусы не проходят диагностику");
+        return false;
+    }
 }

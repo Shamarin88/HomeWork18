@@ -79,4 +79,9 @@ public class Car extends Race implements Competing {
             System.out.println(CarType.CAR_TYPE.carType);
         }
     }
+
+    @Override
+    public boolean completeDiagnostic() {
+        return this.isDiagnosticComplete();
+    }
 }

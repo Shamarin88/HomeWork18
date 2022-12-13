@@ -81,4 +81,9 @@ public class Truck extends Race {
             System.out.println(TruckType.TRUCK_TYPE.truckType);
         }
     }
+
+    @Override
+    public boolean completeDiagnostic() {
+        return this.isDiagnosticComplete();
+    }
 }

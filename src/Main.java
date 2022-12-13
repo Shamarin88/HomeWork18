@@ -37,6 +37,8 @@ public class Main {
         Driver<Car> mike = new Driver<>("Mike","Категория B", 10);
         mike.startMoving(chevrolet);
         System.out.println();
+        Race.diagnosticTransport(chevrolet, alfaRomeo, bmw, mercedes);
+        System.out.println();
 
         Truck kamaz = new Truck("Kamaz","Master",5.0);
         Truck volvo = new Truck("Volvo","Iron Knight",12.8);
@@ -74,6 +76,8 @@ public class Main {
         Driver2<Truck> john = new Driver2<>("John","Категория C",15);
         john.startMoving(kamaz);
         System.out.println();
+        Race.diagnosticTransport(kamaz,volvo,man,scania);
+        System.out.println();
 
         Bus liaz = new Bus("ЛиАЗ","500",5.2);
         Bus gazel = new Bus("Газель","Next",4.2);
@@ -110,6 +114,8 @@ public class Main {
 
         Driver3<Bus> max = new Driver3<>("Max","Категория D",20);
         max.startMoving(liaz);
+        System.out.println();
+        Race.diagnosticTransport(liaz,gazel,maz,volvoX);
         System.out.println();
     }
 }

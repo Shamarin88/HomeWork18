@@ -4,4 +4,6 @@ public interface Competing {
     void getMaxSpeed();
 
     void printType();
+
+    boolean completeDiagnostic();
 }

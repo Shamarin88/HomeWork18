@@ -2,6 +2,7 @@ public abstract class Race implements Competing {
     private String brand;
     private String model;
     private double engineVolume;
+    private boolean diagnosticComplete;
 
     public Race(String brand, String model, double engineVolume) {
         this.brand = brand;
@@ -36,4 +37,19 @@ public abstract class Race implements Competing {
     public abstract void startRace();
 
     public abstract void endRace();
+
+    public boolean isDiagnosticComplete() {
+        return diagnosticComplete;
+    }
+    public static void diagnosticTransport(Race...races) {
+        for (Race race: races) {
+            if (!race.completeDiagnostic()) {
+                try {
+                    throw new RuntimeException(race.getBrand() + " " + race.getModel() + "не прошел диагностику!");
+                } catch (RuntimeException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+    }
 }
