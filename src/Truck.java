@@ -1,7 +1,29 @@
+import java.util.List;
+
 public class Truck extends Race {
     private final String pitStop = " заезжает на Пит-Стоп";
     private final String bestLapTime = "3:15:20";
     private final Integer maxSpeed = 190;
+
+    private Driver2 driver2;
+
+    private Sponsor sponsor;
+
+    public Truck(String brand, String model, double engineVolume) {
+        super(brand, model, engineVolume);
+        this.driver2 = driver2;
+        this.sponsor = sponsor;
+        setDriver2(driver2);
+        setSponsor(sponsor);
+    }
+
+    public void setDriver2(Driver2 driver2) {
+        this.driver2 = driver2;
+    }
+
+    public void setSponsor(Sponsor sponsor) {
+        this.sponsor = sponsor;
+    }
 
     public enum TruckType {
         TRUCK_TYPE("Грузовой автомобиль");
@@ -41,21 +63,26 @@ public class Truck extends Race {
             return "Грузоподъемность: от " + minLoadCapacity + " тонн  до " + maxLoadCapacity + " тонн";
         }
     }
-
-    public Truck(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
-    }
-
     @Override
     public void startRace() {
         System.out.println(getModel() + " " + getBrand() + " начинает движение");
-        System.out.println(getModel() + " " + getBrand() + "набирает скорость");
+        System.out.println(getModel() + " " + getBrand() + " набирает скорость");
     }
 
     @Override
     public void endRace() {
         System.out.println(getModel() + " " + getBrand() + " сбрасывает скорость");
         System.out.println(getModel() + " " + getBrand() + " останавливается");
+    }
+
+    @Override
+    public boolean service() {
+        return false;
+    }
+
+    @Override
+    public void repair() {
+        System.out.println("Грузовик " + getBrand() + " " + getModel() + " чинится");
     }
 
     @Override
@@ -85,5 +112,10 @@ public class Truck extends Race {
     @Override
     public boolean completeDiagnostic() {
         return this.isDiagnosticComplete();
+    }
+
+    @Override
+    public String toString() {
+        return "Грузовик с водителем " + driver2;
     }
 }
