@@ -1,7 +1,29 @@
+import java.util.List;
+
 public class Bus extends Race {
     private final String pitStop = " заезжает на Пит-Стоп";
     private final String bestLapTime = "5:18:20";
     private final Integer maxSpeed = 150;
+
+    private Driver3 driver3;
+
+    private Sponsor sponsor;
+
+    public Bus(String brand, String model, double engineVolume) {
+        super(brand, model, engineVolume);
+        this.driver3 = driver3;
+        this.sponsor = sponsor;
+        setDriver3(driver3);
+        setSponsor(sponsor);
+    }
+
+    public void setDriver3(Driver3 driver3) {
+        this.driver3 = driver3;
+    }
+
+    public void setSponsor(Sponsor sponsor) {
+        this.sponsor = sponsor;
+    }
 
     public enum BusType {
         BUS_TYPE("Автобус");
@@ -41,21 +63,26 @@ public class Bus extends Race {
             return "Вместимость: от " + minSeatCapacity + " - " + maxSeatCapacity + " мест";
         }
     }
-
-    public Bus(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
-    }
-
     @Override
     public void startRace() {
         System.out.println(getModel() + " " + getBrand() + " начинает движение");
-        System.out.println(getModel() + " " + getBrand() + "набирает скорость");
+        System.out.println(getModel() + " " + getBrand() + " набирает скорость");
     }
 
     @Override
     public void endRace() {
         System.out.println(getModel() + " " + getBrand() + " сбрасывает скорость");
         System.out.println(getModel() + " " + getBrand() + " останавливается");
+    }
+
+    @Override
+    public boolean service() {
+        return false;
+    }
+
+    @Override
+    public void repair() {
+
     }
 
     @Override
@@ -86,5 +113,10 @@ public class Bus extends Race {
     public boolean completeDiagnostic() {
         System.out.println("Автобусы не проходят диагностику");
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Автобус с водителем " + driver3;
     }
 }

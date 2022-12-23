@@ -1,7 +1,29 @@
+import java.util.List;
+
 public class Car extends Race implements Competing {
     private final String pitStop = " заезжает на Пит-Стоп";
     private final String bestLapTime = "2:14:18";
     private final Integer maxSpeed = 230;
+
+    private Driver driver;
+
+    private Sponsor sponsor;
+
+    public Car(String brand, String model, double engineVolume) {
+        super(brand, model, engineVolume);
+        this.driver = driver;
+        this.sponsor = sponsor;
+        setDriver(driver);
+        setSponsor(sponsor);
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public void setSponsor(Sponsor sponsor) {
+        this.sponsor = sponsor;
+    }
 
     public enum CarType {
         CAR_TYPE("Легковой автомобиль");
@@ -38,22 +60,26 @@ public class Car extends Race implements Competing {
         }
     }
 
-
-    public Car(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
-    }
-
-
     @Override
     public void startRace() {
         System.out.println(getModel() + " " + getBrand() + " начинает движение");
-        System.out.println(getModel() + " " + getBrand() + "набирает скорость");
+        System.out.println(getModel() + " " + getBrand() + " набирает скорость");
     }
 
     @Override
     public void endRace() {
         System.out.println(getModel() + " " + getBrand() + " сбрасывает скорость");
         System.out.println(getModel() + " " + getBrand() + " останавливается");
+    }
+
+    @Override
+    public boolean service() {
+        return false;
+    }
+
+    @Override
+    public void repair() {
+        System.out.println("Авто " + getBrand() + " " + getModel() + " чинится");
     }
 
     @Override
@@ -83,5 +109,10 @@ public class Car extends Race implements Competing {
     @Override
     public boolean completeDiagnostic() {
         return this.isDiagnosticComplete();
+    }
+
+    @Override
+    public String toString() {
+        return "Автомобиль с водителем " + driver;
     }
 }

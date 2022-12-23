@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -38,6 +40,15 @@ public class Main {
         mike.startMoving(chevrolet);
         System.out.println();
         Race.diagnosticTransport(chevrolet, alfaRomeo, bmw, mercedes);
+        System.out.println();
+
+        Mechanic<Car> elvin = new Mechanic<>("Elvin", "StJohn", "BestMechanics");
+        chevrolet.adMechanic(elvin);
+        System.out.println(chevrolet.getMechanics());
+
+        Sponsor bud = new Sponsor("Bud", 100_000);
+        alfaRomeo.adSponsor(bud);
+        System.out.println(alfaRomeo.getSponsors());
         System.out.println();
 
         Truck kamaz = new Truck("Kamaz","Master",5.0);
@@ -117,5 +128,11 @@ public class Main {
         System.out.println();
         Race.diagnosticTransport(liaz,gazel,maz,volvoX);
         System.out.println();
+
+        ServiceStation serviceStation = new ServiceStation();
+        serviceStation.add(mercedes);
+        serviceStation.doService();
+        serviceStation.add(kamaz);
+        serviceStation.doService();
     }
 }
