@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class Race implements Competing {
     private String brand;
@@ -7,22 +7,22 @@ public abstract class Race implements Competing {
     private double engineVolume;
     private boolean diagnosticComplete;
 
-    private List<Sponsor> sponsors;
-    private List<Mechanic<?>> mechanics;
+    private Set<Sponsor> sponsors;
+    private Set<Mechanic<?>> mechanics;
 
     public Race(String brand, String model, double engineVolume) {
         this.brand = brand;
         this.model = model;
         this.engineVolume = engineVolume;
-        this.mechanics = new ArrayList<>();
-        this.sponsors = new ArrayList<>();
+        this.mechanics = new HashSet<>();
+        this.sponsors = new HashSet<>();
     }
 
-    public List<Sponsor> getSponsors() {
+    public Set<Sponsor> getSponsors() {
         return sponsors;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 
@@ -87,7 +87,7 @@ public abstract class Race implements Competing {
             result.append("Спонсоры: ");
         }
         for (int i = 0; i < sponsors.size(); i++) {
-            result.append(sponsors.get(i));
+            result.append(sponsors.contains(i));
             if (i != sponsors.size() - 1) {
                 result.append(", ");
             }
@@ -97,7 +97,7 @@ public abstract class Race implements Competing {
             result.append("Механики: ");
         }
         for (int i = 0; i < mechanics.size(); i++) {
-            result.append(mechanics.get(i));
+            result.append(mechanics.contains(i));
             if (i != mechanics.size() - 1) {
                 result.append(", ");
             }
